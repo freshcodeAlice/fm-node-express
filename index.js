@@ -1,5 +1,14 @@
-const MyMath = require('./utils/MyMath');
+const http = require('http');
 
-console.log(MyMath);
 
-// console.log(MyMath.sum(2,2));
+const PORT = 3000;
+
+const requestListener = (req, res) => {
+    const {url, method} = req;
+    console.log(url, method);
+   // console.log(res);
+}
+
+const server = http.createServer(requestListener);
+
+server.listen(PORT);
