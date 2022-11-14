@@ -6,7 +6,7 @@ const PORT = 3000;
 
 const requestListener = async (req, res) => {
     const {url} = req;
-    if ( url === '/index.html') {
+    if ( url === '/') {
         try {
             const data = await fs.readFile('./views/index.html', 'utf-8');
             res.end(data);
@@ -16,7 +16,13 @@ const requestListener = async (req, res) => {
         }
 
     } else if( url === '/style.css') {
-        //TODO: прочитати з файлової системи файл style.css і віддати його у відповідь на запит
+        try {
+            const data = await fs.readFile('./views/style.css', 'utf-8');
+            res.end(data);
+        } catch(error) {
+            res.statusCode = 404;
+            res.end();
+        }
     } else {
         res.statusCode = 400;
         res.end();
