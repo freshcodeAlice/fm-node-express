@@ -1,10 +1,10 @@
-const creatingSchema = require('../middlewares');
+const {creatingSchema} = require('../schemas/validation');
 
 
 module.exports.validateUser = async (req, res, next) =>{
     try {
-    const value = await creatingSchema.validate(req.body);
-    next();
+    await creatingSchema.validate(req.body);
+    return next();
     } catch(error){
         res.send(error.message) /* BAD PRACTICE */
     }

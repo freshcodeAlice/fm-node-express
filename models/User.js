@@ -1,7 +1,7 @@
 const db = new Map();
 
 class User {
-    constructor(firstName, lastName, email, password, isSubscribed = false) {
+    constructor({firstName, lastName, email, password, isSubscribed = false}) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
