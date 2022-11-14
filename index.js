@@ -1,18 +1,12 @@
 const express = require('express');
+const validateUser = require('./middlewares');
+
 const app = express();
 const PORT = 3000;
 
-app.get('/', (req, res)=>{
-    res.send('Hello, world');
-});
-app.get('/index.html', (req, res)=>{
-   res.status(404).end();
-});
+const bodyParser = express.json();
 
-/*
-Endpoint (кінцева точка), маршрути, роути, "ручка" - метод + шлях запиту
-
-*/
+app.post('/user', bodyParser, validateUser);
 
 
 
@@ -21,3 +15,20 @@ Endpoint (кінцева точка), маршрути, роути, "ручка"
 app.listen(PORT, ()=>{
     console.log(`Server started on port ${PORT}`);
 });
+
+
+/*
+Зареєструвати юзера
+
++1. Прийняти запит на певний endpoint
++2. Розпарсити дані, які прийшли з запитом.
++3. Перевірити (валідувати) дані.
+4. Зберегти ці дані.
+5. Створити сесію юзера. 
+6. Підготувати дані юзера у відповідь. 
+7. Надіслати підготовлені дані у відповідь на запит.
+
+
+
+
+*/
