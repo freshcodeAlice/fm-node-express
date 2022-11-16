@@ -14,3 +14,7 @@ module.exports.getAllUsers = (req, res) => {
     const users = User.findAll();
     res.send(users);
 }
+
+module.exports.getOneUser = (req, res) => {
+    console.log(req.query);
+}
