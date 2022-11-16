@@ -8,3 +8,9 @@ module.exports.createUser = (req, res) => {
     delete user.password;
     res.send(user);
 }
+
+
+module.exports.getAllUsers = (req, res) => {
+    const users = User.findAll();
+    res.send(users);
+}

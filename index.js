@@ -8,7 +8,7 @@ const PORT = 3000;
 const bodyParser = express.json();
 
 app.post('/user', bodyParser, validateUser, UserController.createUser);
-// створити роут для отримання всіх юзерів
+app.get('/users', UserController.getAllUsers);
 
 app.listen(PORT, ()=>{
     console.log(`Server started on port ${PORT}`);
