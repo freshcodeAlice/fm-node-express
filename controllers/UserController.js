@@ -31,3 +31,17 @@ module.exports.deleteOneUser = (req, res) => {
         res.status(404).end();
     }
 }
+
+
+module.exports.updateUser = (req, res) => {
+     /* Оновлення юзера
+        1. Знайти юзера за його айдішником, отримати екземпляр юзера
+        2. Зробити новий об'єкт на основі старих даних + нових даних
+        3. Встановити в мапу ЗАМІСТЬ старого об'єкта новий
+
+        */
+       const {body, params: {userId}} = req;
+       const user = User.findOne(userId);
+       user.updateUser(body);
+       res.send();
+}
